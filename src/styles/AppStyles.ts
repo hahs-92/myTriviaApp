@@ -14,6 +14,7 @@ export const AppWrapper = styled.div `
     & .Main {
         display: flex;
         justify-content: center;
+        width: 100%;
     }
 
     & .Footer {

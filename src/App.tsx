@@ -3,7 +3,8 @@ import React from 'react';
 import { AppWrapper } from './styles/AppStyles'
 //components
 import Card from './components/Card'
-import CoverCard from './components/CoverCard'
+import CardCover from './components/CardCover'
+import CardInfo from './components/CardInfo';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       {/* Body */}
       <main className='Main'>
         <Card >
-          <CoverCard />
+          <CardCover />
+          {/* <CardInfo /> */}
         </Card>
       </main>
 
