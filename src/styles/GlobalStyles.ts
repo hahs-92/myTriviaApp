@@ -23,14 +23,21 @@ const GlobalStyles  = createGlobalStyle `
         font-family: 'Montserrat', sans-serif;
         font-size: 62.5%;
     }
+
     h1 {
         font-size: 3.6rem;
     }
+
     h2 {
         font-size: 1.8rem;
     }
+    
     h4 {
         font-size: 1.4rem;
+    }
+
+    li {
+        list-style: none;
     }
 `
 export default GlobalStyles

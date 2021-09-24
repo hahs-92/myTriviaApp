@@ -7,6 +7,7 @@ import CardCover from './components/CardCover'
 import CardInfo from './components/CardInfo';
 import CardQuestion from './components/CardQuestion';
 import OptionItem from './components/OptionItem';
+import CardScore from './components/CardScore';
 
 function App() {
   return (
@@ -16,13 +17,14 @@ function App() {
         <Card >
           {/* <CardCover /> */}
           {/* <CardInfo /> */}
-          <CardQuestion
+          {/* <CardQuestion
             title='Cual es la capital de  Estados Unidos de America?'
             questions={['1','2','3','4']}
             render= { (answer, index) => (
               <OptionItem key={index} index={ index } option='COLOMBIA' />
             )}
-          />
+          /> */}
+          <CardScore />
         </Card>
       </main>
 
