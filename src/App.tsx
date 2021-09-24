@@ -8,6 +8,7 @@ import CardInfo from './components/CardInfo';
 import CardQuestion from './components/CardQuestion';
 import OptionItem from './components/OptionItem';
 import CardScore from './components/CardScore';
+import CardGameOver from './components/CardGameOver';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
               <OptionItem key={index} index={ index } option='COLOMBIA' />
             )}
           /> */}
-          <CardScore />
+          {/* <CardScore /> */}
+          <CardGameOver />
         </Card>
       </main>
 
