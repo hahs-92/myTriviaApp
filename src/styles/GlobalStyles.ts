@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 
 //variables globales
 export enum GlobalVariables {
+    bg= '#14279B',
     white = '#ffffff',
     black = '#2F527B',
     blue = '#6066d0d9',

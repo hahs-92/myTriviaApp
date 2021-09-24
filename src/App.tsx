@@ -1,10 +1,26 @@
 import React from 'react';
+//styles
+import { AppWrapper } from './styles/AppStyles'
+//components
+import Card from './components/Card'
+import CoverCard from './components/CoverCard'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello React</h1>
-    </div>
+    <AppWrapper>
+      {/* Body */}
+      <main className='Main'>
+        <Card >
+          <CoverCard />
+        </Card>
+      </main>
+
+
+      {/* Footer */}
+      <footer className='Footer'>
+        Create by HAHS
+      </footer>
+    </AppWrapper>
   );
 }
 
