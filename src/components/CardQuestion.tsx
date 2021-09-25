@@ -6,30 +6,30 @@ import Button from './Button'
 
 
 type CardQuestionProps = {
-    title: string,
-    questions: string[],
+    question: string,
+    answers: string[],
     userAnswer: string | null
     render: (answer: string, index: number) => JSX.Element 
     children?: | React.ReactChild
 }
 
 const CardQuestion:React.FC<CardQuestionProps> = ({
-    title, 
+    question, 
     children, 
     userAnswer,
-    questions, 
+    answers, 
     render 
 }) => {
 
     return(
         <CardQuestionWrapper>
             <section className='QuestionWrapper'>
-                <h2>{title}</h2>
+                <h2>{question}</h2>
             </section>
 
             <section >
                 <ul className='QuestionList'>
-                    { questions.map(render)}
+                    { answers.map(render)}
                     { children }
                 </ul>
             </section>

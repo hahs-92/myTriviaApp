@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 //styles
 import { AppWrapper } from './styles/AppStyles'
 //components
@@ -11,6 +11,8 @@ import CardScore from './components/CardScore';
 import CardGameOver from './components/CardGameOver';
 import Button from './components/Button';
 
+import { useFetch } from './hooks/useFecth'
+
 function App() {
   const [ start, setStart ] = useState(true)
   const [ startGame, setStartGame ] = useState(false)
@@ -20,6 +22,9 @@ function App() {
   const [ userAnswer, setUserAnswer ] = useState<string | null>(null)
   const [ round, setRound ] = useState(0)
   const [ correctAnswer, setCorrectAnswer] = useState<string | null>(null)
+  const [ ctgNumber, setCtgNumber ] = useState('1')
+
+  const { data } = useFetch(ctgNumber)
 
 
   const onStartGame = () => {
@@ -37,6 +42,7 @@ function App() {
     setUserAnswer(answerUser)
   }
 
+  console.log(data)
 
   return (
     <AppWrapper>
@@ -57,14 +63,14 @@ function App() {
           )}
           onQuestion={ () => (
             <CardQuestion 
-              title='Cual es la capital de  Estados Unidos de America?'
-              questions={['a','b','c','d']}
+              question={ data.question as string }
+              answers={data.answers as string[]  }
               userAnswer={ userAnswer }
               render= { (answer, index) => (
                 <OptionItem 
-                  key={index} 
+                  key={answer } 
                   index={ index } 
-                  option='COLOMBIA' 
+                  option={ answer } 
                   value={ answer}
                   cb={ handleUserAnswer }
                 />

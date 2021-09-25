@@ -5,6 +5,7 @@ import { GlobalVariables } from '../GlobalStyles'
 export const CardRegisterWrapper = styled.article `
     display: grid;
     grid-template: 200px 1fr 60px / 1fr;
+    padding: 5%;
     height: 100%;
 
     .ImageWrapper {
