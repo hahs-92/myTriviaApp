@@ -5,7 +5,11 @@ import gameOverImg from '../assets/gameover.svg'
 //styles
 import { CardGameOverWrapper } from '../styles/components/GameOverStyles'
 
-const CardGameOver = () => {
+type CardGameOverProps = {
+    children?: React.ReactChild
+}
+
+const CardGameOver: React.FC<CardGameOverProps> = ({children}) => {
     return(
         <CardGameOverWrapper>
             <section className='Title'>
@@ -17,7 +21,7 @@ const CardGameOver = () => {
             </section>
 
             <section className='ButtonWrapper'>
-                {/* <Button title='Try Again'/> */}
+                { children }
             </section>
         </CardGameOverWrapper>
     )

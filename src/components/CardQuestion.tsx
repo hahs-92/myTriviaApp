@@ -9,6 +9,7 @@ type CardQuestionProps = {
     question: string,
     answers: string[],
     userAnswer: string | null
+    checkAnswer: () => void
     render: (answer: string, index: number) => JSX.Element 
     children?: | React.ReactChild
 }
@@ -18,6 +19,7 @@ const CardQuestion:React.FC<CardQuestionProps> = ({
     children, 
     userAnswer,
     answers, 
+    checkAnswer,
     render 
 }) => {
 
@@ -38,6 +40,7 @@ const CardQuestion:React.FC<CardQuestionProps> = ({
               <Button 
                 title='Next'
                 isActive={ !!userAnswer }
+                cb={ checkAnswer }
               />
             </section>
         </CardQuestionWrapper>

@@ -3,9 +3,9 @@ import { ramdomNumber } from './ramdonNumber'
 import { shuffleArray } from './sortRamdom'
 const API_URL = "https://mytriviaapi.herokuapp.com" 
 
-export const fetchData = async(ctgNumber: string) =>  {
+export const fetchQuestionsByCategory = async(ctgNumber: string, query: string) =>  {
     const ctg = ctgNumber || '1'
-    const data= await (await fetch(`${API_URL}/categories/${ctg}`)).json()
+    const data= await (await fetch(`${API_URL}/${query}/${ctg}`)).json()
     const {
         category_name,
         difficulty: { name_difficulty },
@@ -24,4 +24,10 @@ export const fetchData = async(ctgNumber: string) =>  {
         ]),
         correct_answer: questions[random]["correct_answer"]
     }
+}
+
+export const fetchAwares = async() =>  {
+    const data= await (await fetch(`${API_URL}/awares`)).json()
+
+    return data.map( (item:any) => item["name_award"])
 }

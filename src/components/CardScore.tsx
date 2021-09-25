@@ -1,11 +1,19 @@
 //styles
-import { CardScoreWrapper, Item } from '../styles/components/CardScoreStyles'
+import { CardScoreWrapper } from '../styles/components/CardScoreStyles'
 //components
 import Button from './Button'
+import Item from './Item'
+//custom hooks
+import { useGetAwares } from '../hooks/useGetAwares'
 
-enum awares { "50K","250K","500K","750K", "1M" }
+type CardScoreProps = {
+    round: number,
+    cb: () => void
+}
 
-const CardScore = () => {
+const CardScore: React.FC<CardScoreProps> = ({round,cb}) => {
+    const { data } = useGetAwares()
+    const awares = [...data].reverse()
     return(
         <CardScoreWrapper >
             <section className='Title'>
@@ -14,16 +22,16 @@ const CardScore = () => {
 
             <section>
                 <ul className='ScoreOptions'>
-                    <Item >{awares[4]}</Item>
-                    <Item active={true}>{awares[3]}</Item>
-                    <Item>{awares[2]}</Item>
-                    <Item>{awares[1]}</Item>
-                    <Item>{awares[0]}</Item>
+                    { 
+                        awares.map((item) => (
+                            <Item key={ item } round={ round } award={ item }/>
+                        )) 
+                    }
                 </ul>
             </section>
 
             <section className='ButtonWrapper'>
-                {/* <Button title='Continue'/> */}
+                <Button title='Try again¡¡' cb={ cb } isActive={true} />
             </section>
         </CardScoreWrapper>
     )

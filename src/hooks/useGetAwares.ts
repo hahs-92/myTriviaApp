@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react'
 //utils
-import { fetchData } from '../utils/fetchData'
+import { fetchAwares } from '../utils/fetchData'
 
 
-export const useFetch = (ctgNumber: string) => {
+export const useGetAwares = () => {
     const [loading, setLoading ] = useState(false)
     const [ error, setError] = useState(false)
-    const [ data, setData ] = useState<QuestionState>({})
+    const [ data, setData ] = useState([])
 
     const getData = async() => {
         setLoading(true)
         try {
-            let info: QuestionState
-            info = await fetchData(ctgNumber)
+            const info = await fetchAwares()
             setData(info)
             setLoading(false)
             setError(false)
@@ -24,7 +23,8 @@ export const useFetch = (ctgNumber: string) => {
 
     useEffect(() => {
       getData()
-    },[ctgNumber])
+    },[])
+
 
     return {
         loading,

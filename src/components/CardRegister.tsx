@@ -21,7 +21,8 @@ const CardRegister: React.FC<CardRegisterProps> = ({children,inputValue,cb}) => 
 
             <section className='FormWrapper'>
                 <form onSubmit={ (e) => e.preventDefault()}>
-                    <input type="text" placeholder='userName' onChange={ cb } />
+                    <label htmlFor="userName">UserName:</label>
+                    <input id='userName' type="text" placeholder='example: Alex_9' onChange={ cb } />
                 </form>
             </section>
 
