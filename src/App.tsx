@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 //styles
 import { AppWrapper } from './styles/AppStyles'
 //components
+import Loader from './components/Loader'
 import Card from './components/Card'
 import CardCover from './components/CardCover'
 import CardRegister from './components/CardRegister';
@@ -22,7 +23,7 @@ function App() {
   const [ userName, setUserName] = useState<string | null>(null)
   const [ userAnswer, setUserAnswer ] = useState<string | null>(null)
   const [ round, setRound ] = useState(1)
-  const { data } = useGetQuestions(round.toString(), 'categories')
+  const { data, loading } = useGetQuestions(round.toString(), 'categories')
  
   console.log(data.correct_answer)
 
@@ -65,11 +66,16 @@ function App() {
     <AppWrapper>
       <main className='Main'>
         <Card
+          isLoading= { loading }
           start={ start }
           isLogin = { isLogin }
           startGame= { startGame }
           gameOver= { gameOver } 
-          onStart= { () => (
+          setStartGame={ setStartGame }
+          setGameOver= { setGameOver } 
+          setRound={ setRound }
+          onLoading={ () => <Loader />}
+          onStart= { () => ( 
             <CardCover >
               <Button title='Go¡' cb={ () => setStart(false)} isActive={true } />
             </CardCover >

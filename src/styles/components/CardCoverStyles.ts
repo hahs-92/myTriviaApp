@@ -11,6 +11,7 @@ export const CardCoverWrapper = styled.article `
 
     .CoverImage {
         width: 100%;
+        max-height: 280px;
     }
 
     .ButtonWrapper {

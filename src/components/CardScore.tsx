@@ -17,7 +17,10 @@ const CardScore: React.FC<CardScoreProps> = ({round,cb}) => {
     return(
         <CardScoreWrapper >
             <section className='Title'>
-                <h2>Congratulations</h2>
+                { round < 1 
+                    ?  <h2>You got 0K</h2>
+                    :  <h2>Congratulations</h2>
+                }
             </section>
 
             <section>

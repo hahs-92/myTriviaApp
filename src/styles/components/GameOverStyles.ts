@@ -15,6 +15,7 @@ export const CardGameOverWrapper = styled.article `
     .ImageWrapper {
         & img {
             width: 100%;
+            max-height: 280px;
         }
     }
 
