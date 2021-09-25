@@ -23,7 +23,7 @@ const CardScore = () => {
             </section>
 
             <section className='ButtonWrapper'>
-                <Button title='Continue'/>
+                {/* <Button title='Continue'/> */}
             </section>
         </CardScoreWrapper>
     )

@@ -3,8 +3,13 @@ import { CardCoverWrapper } from '../styles/components/CardCoverStyles'
 import coverImg from '../assets/newbie.svg'
 //components
 import Button from './Button'
+import { Children } from 'react'
 
-const CoverCard = () => {
+type CoverCardProps = {
+    children?: React.ReactChild
+}
+
+const CoverCard: React.FC<CoverCardProps> = ({children}) => {
     return(
         <CardCoverWrapper>
             <section>
@@ -16,7 +21,7 @@ const CoverCard = () => {
             </section>
 
             <section className='ButtonWrapper'>
-                <Button title='Go¡¡'/>
+              { children }
             </section>
         </CardCoverWrapper>
     )

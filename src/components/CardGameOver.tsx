@@ -1,5 +1,5 @@
 //components
-import Button from "./Button"
+// import Button from "./Button"
 //assets
 import gameOverImg from '../assets/gameover.svg'
 //styles
@@ -17,7 +17,7 @@ const CardGameOver = () => {
             </section>
 
             <section className='ButtonWrapper'>
-                <Button title='Try Again'/>
+                {/* <Button title='Try Again'/> */}
             </section>
         </CardGameOverWrapper>
     )

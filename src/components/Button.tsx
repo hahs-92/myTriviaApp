@@ -3,12 +3,15 @@ import React from "react"
 import { ButtonWrapper } from '../styles/components/ButtonStyles'
 
 type ButtonProps = {
-    title: string
+    title: string,
+    isActive: boolean
+    cb?: ( ) => void
 }
 
-const Button: React.FC<ButtonProps> = ({title}) => {
+const Button: React.FC<ButtonProps> = ({title,isActive, cb}) => {
+
     return (
-        <ButtonWrapper>{ title }</ButtonWrapper>
+        <ButtonWrapper  isActive={isActive} onClick={ cb }>{ title }</ButtonWrapper>
     )
 }
 

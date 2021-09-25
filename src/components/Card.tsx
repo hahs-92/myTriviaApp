@@ -3,13 +3,28 @@ import React from 'react'
 import { CardWrapper } from '../styles/components/CardStyles'
 
 type CardProps = {
-    children: React.ReactChild
+    start:  boolean
+    isLogin: boolean
+    startGame: boolean
+    onStart: () => React.ReactNode | JSX.Element[]
+    onRegister: () => React.ReactNode
+    onQuestion: () => React.ReactNode
 }
 
-const Card: React.FC<CardProps> = ({ children }) => {
+const Card: React.FC<CardProps> = ({
+    start, 
+    onStart ,
+    isLogin,
+    onRegister,
+    startGame,
+    onQuestion
+}) => {
+
     return(
         <CardWrapper>
-            { children }
+            { !startGame && start  && onStart() }
+            { !startGame && !isLogin && !start && onRegister() }
+            { isLogin && startGame && onQuestion() }
         </CardWrapper>
     )
 }

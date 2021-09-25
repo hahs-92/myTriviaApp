@@ -2,7 +2,7 @@ import styled from "styled-components";
 //Global variables
 import { GlobalVariables } from '../GlobalStyles'
 
-export const CardInfoWrapper = styled.article `
+export const CardRegisterWrapper = styled.article `
     display: grid;
     grid-template: 200px 1fr 60px / 1fr;
     height: 100%;
