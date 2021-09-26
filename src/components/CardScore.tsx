@@ -5,15 +5,24 @@ import Button from './Button'
 import Item from './Item'
 //custom hooks
 import { useGetAwares } from '../hooks/useGetAwares'
+//utils
+import { sendData } from '../utils/sendData'
 
 type CardScoreProps = {
-    round: number,
+    round: number
+    userName: string
     cb: () => void
 }
 
-const CardScore: React.FC<CardScoreProps> = ({round,cb}) => {
+const CardScore: React.FC<CardScoreProps> = ({round, userName, cb}) => {
     const { data } = useGetAwares()
     const awares = [...data].reverse()
+
+    const handleOnClick = () => {
+        if(round === 5) sendData(userName);
+        cb()
+    }
+
     return(
         <CardScoreWrapper >
             <section className='Title'>
@@ -34,7 +43,7 @@ const CardScore: React.FC<CardScoreProps> = ({round,cb}) => {
             </section>
 
             <section className='ButtonWrapper'>
-                <Button title='Try again¡¡' cb={ cb } isActive={true} />
+                <Button title='Continue' cb={ handleOnClick } isActive={true} />
             </section>
         </CardScoreWrapper>
     )

@@ -24,8 +24,9 @@ export const useGetQuestions = (ctgNumber: string, query: string) => {
     }
 
     useEffect(() => {
-      getData()
-    },[ctgNumber])
+      ( Number(ctgNumber) > 0 && Number(ctgNumber) < 6 ) && getData();
+      // eslint-disable-next-line 
+    },[ctgNumber, query])
 
     return {
         loading,

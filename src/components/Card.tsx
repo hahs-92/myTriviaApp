@@ -10,6 +10,7 @@ type CardProps = {
     isLogin: boolean
     startGame: boolean
     gameOver: boolean
+    isWin: boolean
     setStartGame: React.Dispatch<React.SetStateAction<boolean>>
     setGameOver: React.Dispatch<React.SetStateAction<boolean>>
     setRound: React.Dispatch<React.SetStateAction<number>>
@@ -19,6 +20,7 @@ type CardProps = {
     onQuestion: () => React.ReactNode
     onGameOver: () => React.ReactNode
     onScore: () => React.ReactNode
+    onWinners: () => React.ReactNode
 }
 
 const Card: React.FC<CardProps> = ({
@@ -33,6 +35,8 @@ const Card: React.FC<CardProps> = ({
     gameOver,
     onGameOver,
     onScore,
+    isWin,
+    onWinners,
     setStartGame,
     setGameOver,
     setRound
@@ -47,7 +51,7 @@ const Card: React.FC<CardProps> = ({
     return(
         <CardWrapper>
             { isLoading && onLoading() }
-            { !gameOver && startGame && 
+            { !gameOver && startGame &&
                 <article className='Exit' onClick={ handelOnClick }>
                     <img src={ exitImg } alt="exit" />
                 </article>
@@ -56,7 +60,8 @@ const Card: React.FC<CardProps> = ({
             { !isLoading && !startGame && !isLogin && !start && onRegister() }
             { !isLoading && isLogin && startGame && !gameOver && onQuestion() }
             { !isLoading && startGame && gameOver && onGameOver() }
-            { !isLoading && !startGame && gameOver  && onScore() }
+            { !isLoading && !startGame && gameOver && !isWin && onScore() }
+            { !isLoading && isWin && onWinners() }
 
         </CardWrapper>
     )

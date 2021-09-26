@@ -6,6 +6,8 @@ import Button from './Button'
 
 
 type CardQuestionProps = {
+    difficulty: string
+    category: string
     question: string,
     answers: string[],
     userAnswer: string | null
@@ -15,6 +17,8 @@ type CardQuestionProps = {
 }
 
 const CardQuestion:React.FC<CardQuestionProps> = ({
+    category,
+    difficulty,
     question, 
     children, 
     userAnswer,
@@ -25,6 +29,11 @@ const CardQuestion:React.FC<CardQuestionProps> = ({
 
     return(
         <CardQuestionWrapper>
+            <section className='QuestionInfo'>
+                <h3>{difficulty}</h3>
+                <h3>{category}</h3>
+            </section>
+
             <section className='QuestionWrapper'>
                 <h2>{question}</h2>
             </section>

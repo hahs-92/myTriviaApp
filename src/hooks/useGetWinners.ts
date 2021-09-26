@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 //utils
-import { fetchAwares } from '../utils/fetchData'
+import { fetchWinners } from '../utils/fetchData'
 
-
-export const useGetAwares = () => {
+export const useGetWinners = () => {
     const [loading, setLoading ] = useState(false)
     const [ error, setError] = useState(false)
     const [ data, setData ] = useState([])
@@ -11,7 +10,7 @@ export const useGetAwares = () => {
     const getData = async() => {
         setLoading(true)
         try {
-            const info = await fetchAwares()
+            const info = await fetchWinners()
             setData(info)
             setLoading(false)
             setError(false)

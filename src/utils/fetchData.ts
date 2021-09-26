@@ -1,7 +1,7 @@
 //uutils
 import { ramdomNumber } from './ramdonNumber'
 import { shuffleArray } from './sortRamdom'
-const API_URL = "https://mytriviaapi.herokuapp.com" 
+const API_URL = process.env.REACT_APP_URL_API
 
 export const fetchQuestionsByCategory = async(ctgNumber: string, query: string) =>  {
     const ctg = ctgNumber || '1'
@@ -30,4 +30,10 @@ export const fetchAwares = async() =>  {
     const data= await (await fetch(`${API_URL}/awares`)).json()
 
     return data.map( (item:any) => item["name_award"])
+}
+
+export const fetchWinners = async() =>  {
+    const data= await (await fetch(`${API_URL}/winners`)).json()
+
+    return data.map( (item:any) => item["first_name"])
 }

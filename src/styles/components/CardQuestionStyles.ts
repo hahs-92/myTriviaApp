@@ -1,13 +1,17 @@
 import styled from "styled-components";
-//Global variables
-import { GlobalVariables } from '../GlobalStyles'
 
 export const CardQuestionWrapper = styled.article `
     display: grid;
-    grid-template: 1fr 2fr 60px / 1fr;
+    grid-template: 30px 60px 2fr 60px / 1fr;
     padding: 5%;
     width: 100%;
     height: 100%;
+
+    .QuestionInfo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     .QuestionWrapper {
         display: flex;

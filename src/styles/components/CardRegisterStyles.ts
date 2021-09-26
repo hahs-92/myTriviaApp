@@ -33,6 +33,10 @@ export const CardRegisterWrapper = styled.article `
             justify-content: space-evenly;
             width: 95%;
 
+            & label {
+                font-size: 1.6rem;
+            }
+
             & input {
                 padding: 5%;
                 height: 40px;

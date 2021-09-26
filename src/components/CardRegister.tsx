@@ -3,8 +3,6 @@ import React from 'react'
 import imgInfo from '../assets/question.svg'
 //styles
 import  { CardRegisterWrapper } from '../styles/components/CardRegisterStyles'
-//componentes
-import Button from './Button'
 
 type CardRegisterProps = {
     inputValue: string | null

@@ -11,9 +11,9 @@ import OptionItem from './components/OptionItem';
 import CardScore from './components/CardScore';
 import CardGameOver from './components/CardGameOver';
 import Button from './components/Button';
+import CardWinners from './components/CardWinners'
 //customHooks
 import { useGetQuestions } from './hooks/useGetQuestions'
-
 
 function App() { 
   const [ start, setStart ] = useState(true)
@@ -23,9 +23,8 @@ function App() {
   const [ userName, setUserName] = useState<string | null>(null)
   const [ userAnswer, setUserAnswer ] = useState<string | null>(null)
   const [ round, setRound ] = useState(1)
+  const [ isWin, setIsWin ] = useState(false)
   const { data, loading } = useGetQuestions(round.toString(), 'categories')
- 
-  console.log(data.correct_answer)
 
   const onStartGame = () => {
     setIsLogin(true)
@@ -59,7 +58,9 @@ function App() {
     setStartGame(false)
     setIsLogin(false)
     setUserAnswer(null)
+    setUserName(null)
     setRound(1)
+    setIsWin(false)
   }
 
   return (
@@ -71,6 +72,7 @@ function App() {
           isLogin = { isLogin }
           startGame= { startGame }
           gameOver= { gameOver } 
+          isWin= { isWin }
           setStartGame={ setStartGame }
           setGameOver= { setGameOver } 
           setRound={ setRound }
@@ -91,6 +93,8 @@ function App() {
               answers={data.answers as string[]  }
               userAnswer={ userAnswer }
               checkAnswer={ checkAnswer }
+              category={ data?.category as string }
+              difficulty={ data?.difficulty as string}
               render= { (answer, index) => (
                 <OptionItem 
                   key={answer } 
@@ -109,13 +113,20 @@ function App() {
               <Button title='Try Again¡' isActive={true} cb={ reBoot }/>
             </CardGameOver>
           )}
-          onScore= { () => <CardScore cb={reBoot } round={ round} />}
+          onScore= { () => (
+            <CardScore cb={ () => setIsWin(true)} round={round} userName={ userName as string }/>
+          ) }
+          onWinners= { () => 
+            <CardWinners round={ round } userName={ userName as string}>
+              <Button title='Try Again¡¡' isActive={true } cb={() => reBoot() }/>
+            </CardWinners>
+          }
         >
         </Card>
       </main>
 
       <footer className='Footer'>
-        Create by HAHS
+        Created by HAHS
       </footer>
     </AppWrapper>
   );

@@ -1,6 +1,4 @@
 import styled from "styled-components";
-//Global variables
-import { GlobalVariables } from '../GlobalStyles'
 
 export const CardCoverWrapper = styled.article `
     display: grid;
@@ -9,7 +7,7 @@ export const CardCoverWrapper = styled.article `
     width: 100%;
     height: 100%;
 
-    .CoverImage {
+    .CoverImage { 
         width: 100%;
         max-height: 280px;
     }

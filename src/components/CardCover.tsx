@@ -1,9 +1,7 @@
 import { CardCoverWrapper } from '../styles/components/CardCoverStyles'
 //assests
 import coverImg from '../assets/newbie.svg'
-//components
-import Button from './Button'
-import { Children } from 'react'
+
 
 type CoverCardProps = {
     children?: React.ReactChild
