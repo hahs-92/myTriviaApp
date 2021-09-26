@@ -1,4 +1,4 @@
-const API_URL = process.env.URL_API
+const API_URL = process.env.REACT_APP_URL_API
 
 export const sendData = async(userName: string ) =>  {
     const data = {
