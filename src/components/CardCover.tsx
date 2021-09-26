@@ -2,7 +2,6 @@ import { CardCoverWrapper } from '../styles/components/CardCoverStyles'
 //assests
 import coverImg from '../assets/newbie.svg'
 
-
 type CoverCardProps = {
     children?: React.ReactChild
 }

@@ -24,23 +24,27 @@ function App() {
   const [ userAnswer, setUserAnswer ] = useState<string | null>(null)
   const [ round, setRound ] = useState(1)
   const [ isWin, setIsWin ] = useState(false)
-  const { data, loading } = useGetQuestions(round.toString(), 'categories')
+  const { data, loading, error } = useGetQuestions(round.toString(), 'categories')
 
+  //EMPEZAR JUEGO
   const onStartGame = () => {
-    setIsLogin(true)
+    setIsLogin(true) //VERIFICAR QUE EL USAURIO HAYA INGRESADO NOMBRE
     setStartGame(true)
   }
 
+  // OBTENER EL NOMBRE DEL USUARIO
   const onHandleLogin = (e: React.ChangeEvent<HTMLInputElement>) => {
     const user = e.target.value
     setUserName(user)
   }
 
+  // OBTENER LA RESPUESTA DEL USUARIO
   const handleUserAnswer = (e:React.MouseEvent<HTMLLIElement> ) => {
     const answerUser = e.currentTarget.getAttribute('value') as string
     setUserAnswer(answerUser)
   }
 
+  // REVISAR LA RESOUESTA DEL USUARIO
   const checkAnswer = () => {
     if(userAnswer !== data.correct_answer ) return setGameOver(true);
     if(round === 5) {
@@ -52,6 +56,7 @@ function App() {
     }
   }
 
+  //REINICIAR EL JUEGO
   const reBoot = () => {
     setStart(true)
     setGameOver(false)
@@ -66,7 +71,9 @@ function App() {
   return (
     <AppWrapper>
       <main className='Main'>
+        {/* RENDER PROPS */}
         <Card
+          isError= { error }
           isLoading= { loading }
           start={ start }
           isLogin = { isLogin }
@@ -115,7 +122,7 @@ function App() {
           )}
           onScore= { () => (
             <CardScore cb={ () => setIsWin(true)} round={round} userName={ userName as string }/>
-          ) }
+          )}
           onWinners= { () => 
             <CardWinners round={ round } userName={ userName as string}>
               <Button title='Try Again¡¡' isActive={true } cb={() => reBoot() }/>

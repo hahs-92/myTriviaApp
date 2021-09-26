@@ -4,6 +4,9 @@ import { GlobalVariables } from '../GlobalStyles'
 
 export const CardWrapper = styled.section `
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 95%;
     max-width: 450px;
     min-width: 280px;

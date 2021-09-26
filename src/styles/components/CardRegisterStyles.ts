@@ -6,6 +6,7 @@ export const CardRegisterWrapper = styled.article `
     display: grid;
     grid-template: 200px 1fr 60px / 1fr;
     padding: 5%;
+    width: 100%;
     height: 100%;
 
     .ImageWrapper {

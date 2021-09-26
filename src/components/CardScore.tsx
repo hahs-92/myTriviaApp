@@ -16,8 +16,9 @@ type CardScoreProps = {
 
 const CardScore: React.FC<CardScoreProps> = ({round, userName, cb}) => {
     const { data } = useGetAwares()
-    const awares = [...data].reverse()
+    const awares = [...data]
 
+    //ENVIAR LOS GANADORES AL SERVIDOR
     const handleOnClick = () => {
         if(round === 5) sendData(userName);
         cb()
@@ -35,7 +36,7 @@ const CardScore: React.FC<CardScoreProps> = ({round, userName, cb}) => {
             <section>
                 <ul className='ScoreOptions'>
                     { 
-                        awares.map((item) => (
+                        awares.reverse().map((item: string) => (
                             <Item key={ item } round={ round } award={ item }/>
                         )) 
                     }

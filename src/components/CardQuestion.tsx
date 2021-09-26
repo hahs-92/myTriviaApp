@@ -4,7 +4,6 @@ import { CardQuestionWrapper } from '../styles/components/CardQuestionStyles'
 //components
 import Button from './Button'
 
-
 type CardQuestionProps = {
     difficulty: string
     category: string

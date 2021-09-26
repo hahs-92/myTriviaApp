@@ -5,6 +5,7 @@ import { CardWrapper } from '../styles/components/CardStyles'
 import exitImg from '../assets/exit.svg'
 
 type CardProps = {
+    isError: boolean
     isLoading: boolean
     start:  boolean
     isLogin: boolean
@@ -24,6 +25,7 @@ type CardProps = {
 }
 
 const Card: React.FC<CardProps> = ({
+    isError,
     isLoading,
     onLoading,
     start, 
@@ -42,6 +44,7 @@ const Card: React.FC<CardProps> = ({
     setRound
 }) => {
 
+    //PERMITIR AL USUARIO ABANDONAR EL JUEGO
     const handelOnClick = () => {
         setStartGame(false)
         setGameOver(true)
@@ -50,18 +53,19 @@ const Card: React.FC<CardProps> = ({
 
     return(
         <CardWrapper>
-            { isLoading && onLoading() }
-            { !gameOver && startGame &&
+            { isError && <h1>Something went wrong¡</h1>}
+            { !isError && isLoading && onLoading() }
+            { !isError && !gameOver && startGame &&
                 <article className='Exit' onClick={ handelOnClick }>
                     <img src={ exitImg } alt="exit" />
                 </article>
             }
-            { !isLoading && !startGame && start  && onStart() }
-            { !isLoading && !startGame && !isLogin && !start && onRegister() }
-            { !isLoading && isLogin && startGame && !gameOver && onQuestion() }
-            { !isLoading && startGame && gameOver && onGameOver() }
-            { !isLoading && !startGame && gameOver && !isWin && onScore() }
-            { !isLoading && isWin && onWinners() }
+            { !isError && !isLoading && !startGame && start  && onStart() }
+            { !isError && !isLoading && !startGame && !isLogin && !start && onRegister() }
+            { !isError && !isLoading && isLogin && startGame && !gameOver && onQuestion() }
+            { !isError && !isLoading && startGame && gameOver && onGameOver() }
+            { !isError && !isLoading && !startGame && gameOver && !isWin && onScore() }
+            { !isError && !isLoading && isWin && onWinners() }
 
         </CardWrapper>
     )

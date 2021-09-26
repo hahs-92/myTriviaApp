@@ -6,7 +6,6 @@ import { useGetWinners } from '../hooks/useGetWinners'
 //components
 import Item from './Item'
 
-
 type CardWinnersProps = {
     children?: React.ReactNode,
     round: number
@@ -16,7 +15,6 @@ type CardWinnersProps = {
 const CardWinners: React.FC<CardWinnersProps> = ({children, round, userName}) => {
     const { data } = useGetWinners()
     const winners = [...data].reverse()
-   
     return(
         <CardWinnersWrapper>
             <section className='TitleWrapper'>
@@ -26,7 +24,7 @@ const CardWinners: React.FC<CardWinnersProps> = ({children, round, userName}) =>
             <section className='ContentWrapper'>
                <ul>
                    {
-                        winners.map((winner, index) => (
+                        data.length && winners.map((winner, index) => (
                            <Item key={`${winner}-${index}`} award={winner}/>
                         ))
                    }
